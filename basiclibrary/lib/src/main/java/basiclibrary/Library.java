@@ -5,9 +5,51 @@ package basiclibrary;
 
 import java.util.Arrays;
 import java.util.Random;
-
+import java.util.Set;
+import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 public class Library {
     public static void main(String[] args) {
+    }
+
+    public static String tally(ArrayList <String> v){
+        Map<String, Integer> map = new HashMap<>();
+
+        for (String name : v) {
+            map.put(name,map.getOrDefault(name, 0) + 1);
+        } int max=0;
+        for (String name : v) {
+            if(max<map.get(name))
+                max=map.get(name);
+        }
+        for (String name : v) {
+            if(max==map.get(name)){
+                return(name);
+
+            }}}
+
+
+    public static  ArrayList <Integer> theLowestAverageArr(int [][] WMT){
+        Set<Integer> numberSet = new HashSet<>();
+        ArrayList<Integer> intList = new ArrayList<>();
+        int min=1000000 , max=0;
+        for (int i=0;i<WMT.length;++i)
+            for (int ii=0;ii<WMT[0].length;++ii){
+                numberSet.add(WMT[i][ii]);
+                if(WMT[i][ii]<min)
+                    min=WMT[i][ii];
+                if(max<WMT[i][ii])
+                    max=WMT[i][ii];
+            }
+        System.out.println("high"+max);
+        System.out.println("low"+min);
+        for(int i=min;i<=max;++i){
+            if(!numberSet.contains(i)){
+                intList.add(i);
+                System.out.println(i);}}
+        return intList;
     }
 
     public static int[] roll(int num) {
