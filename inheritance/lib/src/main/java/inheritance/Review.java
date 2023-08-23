@@ -7,6 +7,8 @@ public class Review {
     private String author;
     private int stars;
     private Restaurant restaurant;
+    private Shop s;
+    private Theater t;
 
     public Review(int stars , String author , String body,Restaurant res){
         this.author = author;
@@ -15,6 +17,15 @@ public class Review {
         this.restaurant = res;
         res.addReview(this);
     }
+    public Review(int stars , String author , String body,Shop S){
+        this.author = author;
+        this.body = body;
+        this.stars = Math.max(0, Math.min(5, stars));
+        this.s = S;
+        s.addReview(this);
+    }
+
+
     public String getBody(){
         return this.body;
     }

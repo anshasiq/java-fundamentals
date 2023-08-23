@@ -16,6 +16,8 @@ public class RestaurantTest {
         assertEquals(25, res.getPrice());
     }
 
+
+
     @Test
     void Restaurant_toString_ReturnString_With_TheSpecifiedFormat() {
         Restaurant res = new Restaurant("99Grill", 4, 25);
@@ -63,4 +65,14 @@ public class RestaurantTest {
         Review rev3 = new Review(5, "ASAC", "Amazing Food", res);
         assertEquals(3.7, res.getRate());
     }
+    @Test
+    void  test(){
+        Restaurant res = new Restaurant("99Grill", 4, 25);
+        Review rev = new Review(5, "Mohammad", "High Rate Food", res);
+        Review rev1 = new Review(5, "Mohammad", "High Rate Food", res);
+
+        assertEquals( "sdasd",res.getReviews());
+    }
+
+
 }
