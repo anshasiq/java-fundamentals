@@ -3,12 +3,56 @@
  */
 package linter;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static linter.App.content;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Test void OneError() throws FileNotFoundException {
+        App sut = new App();
+        String path="/Users/ahmad/java-fundamentals/java-fundamentals/linter/app/src/test/resources/oneError.js";
+        sut.test(path);
+        List<String> expected = new ArrayList<>();
+        expected.add("Line 4: Missing semicolon.");
+        Assertions.assertEquals(expected, content);
     }
+
+    @Test void NoErrorAtAll() throws FileNotFoundException {
+        App sut = new App();
+        String path="/Users/ahmad/java-fundamentals/java-fundamentals/linter/app/src/test/resources/noError.js";
+        sut.test(path);
+        List<String> expected = new ArrayList<>();
+        assertEquals(expected,content);
+
+
+    }
+    @Test void emptyOne() throws FileNotFoundException {
+        App sut = new App();
+        String path="/Users/ahmad/java-fundamentals/java-fundamentals/linter/app/src/test/resources/empty.js";
+        sut.test(path);
+        List<String> expected = new ArrayList<>();
+        assertEquals(expected,content);
+    }
+
+    @Test void sendFile_With_FewErrors() throws FileNotFoundException {
+        App sut = new App();
+        String path="/Users/ahmad/java-fundamentals/java-fundamentals/linter/app/src/test/resources/fewErros.js";
+        sut.test(path);
+        List<String> expected = new ArrayList<>();
+        expected.add("Line 3: Missing semicolon.");
+        expected.add("Line 5: Missing semicolon.");
+        expected.add("Line 9: Missing semicolon.");
+        expected.add("Line 13: Missing semicolon.");
+        expected.add("Line 17: Missing semicolon.");
+        expected.add("Line 18: Missing semicolon.");
+        Assertions.assertEquals(expected, content);}
+
+
+
 }
