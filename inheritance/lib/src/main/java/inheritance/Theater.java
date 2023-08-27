@@ -35,5 +35,12 @@ public class Theater {
         if (!reviews.contains(review)) {
             reviews.add(review); }}
 
-
+    @Override
+    public String toString() {
+        return "Theater{" +
+                "name='" + name + '\'' +
+                ", movies=" + movies +
+                ", reviews=" + reviews +
+                '}';
+    }
 }
